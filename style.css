@@ -1,0 +1,190 @@
+:root {
+    --bgColor: white;
+    --textColor: black;
+}
+
+.dark {
+    --bgColor: rgb(26, 22, 28);
+    --textColor: rgb(255, 255, 255);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bgColor);
+
+}
+
+.courser {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid rgba(37, 34, 34, 0.532);
+    position: absolute;
+    transition: 0.1s ease;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.modeToggler {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modeToggler .toggleMood {
+    display: flex;
+    gap: 20px;
+
+}
+
+.modeToggler .toggleMood h2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 44px;
+    color: var(--textColor);
+}
+
+.modeToggler .toggleMood button {
+    width: 44px;
+    height: 44px;
+    font-size: 25px;
+    border: none;
+    overflow: hidden;
+    cursor: pointer;
+
+}
+
+.modeToggler .toggleMood button span {
+    width: 44px;
+    height: 44px;
+    display: block;
+    line-height: 40px;
+}
+
+.modeToggler .toggleMood button span.sunMode {
+    background-color: black;
+    color: white;
+}
+
+.dark .modeToggler .toggleMood button span.sunMode {
+    margin-top: -44px;
+    transition: 0.3s;
+}
+
+.modeToggler .toggleMood button span.moonMode {
+    background-color: #fff;
+
+}
+
+.preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.preview.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 10;
+    backdrop-filter: blur(4px);
+
+}
+
+.preview img {
+    width: 600px;
+    height: 630px;
+
+}
+
+.preview .imgContainer {
+    position: relative;
+}
+
+.preview .imgContainer .closeBtn {
+    position: absolute;
+    right: 0px;
+    top: 0;
+    border-radius: 50%;
+    border: none;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer
+}
+
+.preview .imgContainer .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    border: none;
+
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer
+}
+
+.preview .imgContainer .arrow.leftBtn {
+    left: -30px;
+}
+
+#images {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#images .imgStor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: filter 0.3s ease;
+    perspective: 800px;
+}
+
+#images .imgStor img {
+    width: 300px;
+    height: 300px;
+    transform: rotateX(40deg);
+    transition: 0.5s ease;
+    cursor: pointer;
+    object-fit: cover;
+    border-radius: 30px;
+    border: 2px solid #000000d9;
+}
+
+#images .imgStor:hover img {
+    filter: blur(6px);
+
+}
+
+#images .imgStor img:hover {
+
+    transform: rotateX(0) scale(1.3);
+    cursor: pointer;
+    z-index: 1;
+    filter: blur(0);
+}
